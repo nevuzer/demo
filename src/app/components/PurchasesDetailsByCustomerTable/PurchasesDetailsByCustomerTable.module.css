@@ -1,0 +1,16 @@
+.root {
+  margin-top: 50px;
+}
+
+.tableHead th {
+  font-weight: bold;
+}
+
+.cellRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bold {
+  font-weight: bold;
+}
