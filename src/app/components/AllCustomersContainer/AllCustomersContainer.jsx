@@ -7,6 +7,7 @@ import { PurchasesDetailsByCustomerTable } from "app/components/PurchasesDetails
 import { getPurchasesSortedByCustomerId } from "app/shared/functions/purchases";
 import { ErrorMessage } from "app/components/ErrorMessage/ErrorMessage";
 import { CustomerService } from "app/services/customer.service";
+import { PurchaseService } from "app/services/purchase.service";
 import styles from "./AllCustomersContainer.module.css";
 
 export const AllCustomersContainer = (props) => {
@@ -22,8 +23,8 @@ export const AllCustomersContainer = (props) => {
     setPurchases([]);
     setCustomers([]);
     const fetchData = withError
-      ? CustomerService.fetchPurchasesWithWrongEndpoint
-      : CustomerService.fetchPurchases;
+      ? PurchaseService.fetchPurchasesWithWrongEndpoint
+      : PurchaseService.fetchPurchases;
     Promise.all([CustomerService.fetchCustomers(), fetchData()])
       .then((values) => {
         setCustomers(values[0]);

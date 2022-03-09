@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import { Select } from "app/components/Select/Select";
-import { CustomerService } from "app/services/customer.service";
 import { Loader } from "app/components/Loader/Loader";
 import { PurchasesDetailsByCustomerTable } from "app/components/PurchasesDetailsByCustomerTable/PurchasesDetailsByCustomerTable";
 import { AllTransactionOneCustomerTable } from "app/components/AllTransactionOneCustomerTable/AllTransactionOneCustomerTable";
 import { calculateCustomerPurchasesByMonth } from "app/shared/functions/purchases";
+import { ErrorMessage } from "app/components/ErrorMessage/ErrorMessage";
+import { CustomerService } from "app/services/customer.service";
+import { PurchaseService } from "app/services/purchase.service";
 import styles from "./OneCustomerContainer.module.css";
-import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 
 export const OneCustomerContainer = () => {
   const [value, setValue] = useState("");
@@ -25,7 +26,7 @@ export const OneCustomerContainer = () => {
 
   const fetchPurchases = (customerId) => {
     setIsLoadingPurchases(true);
-    CustomerService.fetchPurchasesByCustomerId(customerId)
+    PurchaseService.fetchPurchasesByCustomerId(customerId)
       .then((response) => {
         setPurchases(response);
         setIsLoadingPurchases(false);
