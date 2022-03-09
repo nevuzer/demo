@@ -38,7 +38,11 @@ export const AllCustomersContainer = (props) => {
 
   return (
     <>
-      <Button variant="outlined" onClick={fetchCustomersAndPurchases}>
+      <Button
+        variant="outlined"
+        onClick={fetchCustomersAndPurchases}
+        disabled={isLoading}
+      >
         Fetch data
       </Button>
       <Box className={styles.container}>

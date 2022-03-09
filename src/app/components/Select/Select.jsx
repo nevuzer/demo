@@ -6,11 +6,11 @@ import MenuItem from "@mui/material/MenuItem";
 import MUISelect from "@mui/material/Select";
 
 export const Select = (props) => {
-  const { value, onChange, label, options } = props;
+  const { value, onChange, label, options, disabled } = props;
 
   return (
     <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
+      <FormControl fullWidth disabled={disabled}>
         <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <MUISelect
           labelId="demo-simple-select-label"
@@ -35,4 +35,5 @@ Select.propTypes = {
   onChange: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
+  disabled: PropTypes.bool,
 };

@@ -59,7 +59,6 @@ export const OneCustomerContainer = () => {
 
   return (
     <>
-      {isLoadingCustomers && <Loader message="Please wait..." />}
       {!isLoadingCustomers && (
         <Select
           label={"Customer"}
@@ -69,10 +68,13 @@ export const OneCustomerContainer = () => {
           }))}
           onChange={changeCustomer}
           value={value}
+          disabled={isLoadingPurchases}
         />
       )}
       <Box className={styles.tableContainer}>
-        {isLoadingPurchases && <Loader message="Please wait..." />}
+        {(isLoadingPurchases || isLoadingCustomers) && (
+          <Loader message="Please wait..." />
+        )}
         {!isLoadingPurchases && purchases.length !== 0 && !isError && (
           <>
             <PurchasesDetailsByCustomerTable

@@ -79,7 +79,10 @@ export const getPurchasesSortedByCustomerId = (customers, purchases) => {
       case format(addMonths(new Date(), -2), "yyyy-MM"):
         updateCustomerData(sortedByCustomerId, purchase, -2);
         break;
+      default:
+        break;
     }
+    return purchase;
   });
 
   return sortedByCustomerId;
